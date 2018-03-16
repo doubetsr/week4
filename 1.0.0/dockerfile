@@ -8,9 +8,9 @@ ENV S6_RELEASE 1.21.4.0
 ADD https://github.com/just-containers/s6-overlay/releases/download/v$S6_RELEASE/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 
-# Installs htop for practice
-RUN apt-get update
-RUN apt-get install htop -y
+# Installs a few usless appplications
+RUN apt-get update \
+ && apt-get install cowsay fortune -y
 
 # Copy the install script into the Container to be executed on startup
 COPY install.sh /etc/cont-init.d/
